@@ -6,6 +6,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+## ES7 Commands <----------
+
+https://github.com/r5n-labs/vscode-react-javascript-snippets/blob/HEAD/docs/Snippets.md
+
 ### `npm start`
 
 Runs the app in the development mode.\

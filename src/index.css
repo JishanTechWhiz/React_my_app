@@ -11,3 +11,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* src/components/ExampleCarouselImage.css */
+.carousel-image {
+  width: 100%; /* Set width to 100% of the parent */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 600px; /* Set a maximum height */
+}
+
+/* src/App.css or relevant CSS file */
+.profile-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #007bff; /* Bootstrap primary color */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px; /* Space between profile circle and other elements */
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+
+/* styles.css */
+@media (max-width: 767.98px) { /* Adjust the max-width as needed for mobile screens */
+  .myEmailInput {
+    width: 55%; /* Set the width to 55% */
+     /* Center the navbar horizontally */
+  }
+}
+
+
