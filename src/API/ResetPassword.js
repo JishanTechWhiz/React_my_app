@@ -16,7 +16,9 @@ const ResetPassword = () => {
         setMessage('');
         setError('');
         try {
-            const response = await axios.post('http://localhost:5000/api/reset-password', { email, newPassword });
+            // const response = await axios.post('http://localhost:5000/api/reset-password', { email, newPassword });
+            const response = await axios.post('https://react-app-backend-1.onrender.com/api/reset-password', { email, newPassword });
+            
             setMessage(response.data.message);
 
             // Clear email from localStorage

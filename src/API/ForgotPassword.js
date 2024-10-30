@@ -13,7 +13,8 @@ const ForgotPassword = () => {
         setMessage(''); // Clear messages before new request
         setError('');
         try {
-            const response = await axios.post('http://localhost:5000/api/forgot-password', { email });
+            //const response = await axios.post('http://localhost:5000/api/forgot-password', { email });
+            const response = await axios.post('https://react-app-backend-1.onrender.com/api/forgot-password', { email });
             setMessage(response.data.message);
 
             // Store email in localStorage

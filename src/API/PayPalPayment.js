@@ -22,7 +22,9 @@ const PayPalCheckout = () => {
   // Create order by calling the backend
   const createOrder = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/create-order", {
+      //const res = await fetch("http://localhost:5000/api/create-order", {
+        const res = await fetch("https://react-app-backend-1.onrender.com/api/create-order", {
+
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -38,7 +40,8 @@ const PayPalCheckout = () => {
   // Capture order by calling the backend on approval
   const onApprove = async (data) => {
     try {
-      const res = await fetch("http://localhost:5000/api/capture-order", {
+      // const res = await fetch("http://localhost:5000/api/capture-order", {
+        const res = await fetch("https://react-app-backend-1.onrender.com/api/capture-order", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

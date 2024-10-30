@@ -103,7 +103,9 @@ export const Todos = () => {
     const pdfData = generatePDF();
 
     try {
-      const response = await axios.post('http://localhost:5000/email/send-pdf', {
+      // const response = await axios.post('http://localhost:5000/email/send-pdf', {
+        const response = await axios.post('https://react-app-backend-1.onrender.com/email/send-pdf', {
+       
         email: email,
         pdfData: pdfData.split(',')[1], // Extract only base64 part
       });

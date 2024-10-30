@@ -22,7 +22,8 @@ const Profile = () => {
                 const config = {
                     headers: { Authorization: `Bearer ${token}` }
                 };
-                const response = await axios.get('http://localhost:5000/api/profile', config);
+                // const response = await axios.get('http://localhost:5000/api/profile', config);
+                const response = await axios.get('https://react-app-backend-1.onrender.com/api/profile', config);
                 setUserData(response.data);
             } catch (error) {
                 setMessage('Failed to fetch profile.');
@@ -45,7 +46,8 @@ const Profile = () => {
             const config = {
                 headers: { Authorization: `Bearer ${token}` }
             };
-            const response = await axios.put('http://localhost:5000/api/profile', userData, config);
+            // const response = await axios.put('http://localhost:5000/api/profile', userData, config);
+            const response = await axios.put('https://react-app-backend-1.onrender.com/api/profile', userData, config);
             setMessage(response.data.message); // Show success message
             setEditMode(false); // Exit edit mode
         } catch (error) {

@@ -16,7 +16,9 @@ const VerifyOTP = () => {
         setMessage('');
         setError('');
         try {
-            const response = await axios.post('http://localhost:5000/api/verify-otp', { email, otp });
+            // const response = await axios.post('http://localhost:5000/api/verify-otp', { email, otp });
+            const response = await axios.post('https://react-app-backend-1.onrender.com/api/verify-otp', { email, otp });
+            
             setMessage(response.data.message);
 
             // Navigate to Reset Password page

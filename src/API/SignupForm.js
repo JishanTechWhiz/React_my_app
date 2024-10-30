@@ -11,7 +11,8 @@ const SignupForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/api/signup', {
+            // const response = await axios.post('http://localhost:5000/api/signup', {
+                const response = await axios.post('https://react-app-backend-1.onrender.com/api/signup', {
                 name,
                 email,
                 password,
