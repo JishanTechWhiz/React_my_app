@@ -9,7 +9,7 @@ const CricketData = () => {
   const [currentPage, setCurrentPage] = useState(1); // Current page for pagination
   const [matchesPerPage] = useState(6); // Number of matches to display per page
 
-  const apiKey = '3784b6ba-6753-43d3-9703-3f1b5df3adc8';
+  const apiKey = process.env.REACT_APP_CRICKET_API_KEY;
 
   useEffect(() => {
     const fetchMatches = async () => {

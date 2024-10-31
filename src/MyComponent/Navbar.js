@@ -58,6 +58,11 @@ export default function MyNavbar() {
                 </Nav.Link>
               )}
               {isAuthenticated && (
+                <Nav.Link as={Link} to="/chatbot">
+                  Chatbot
+                </Nav.Link>
+              )}
+              {isAuthenticated && (
                 <Nav.Link as={Link} to="/forgot-password">
                   Forgot Password
                 </Nav.Link>

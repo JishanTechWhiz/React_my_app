@@ -16,6 +16,7 @@ import ResetPassword from './API/ResetPassword';
 import CricketOrg from './API/CricketOrg';
 
 import PayPalPayment from './API/PayPalPayment';
+import GeminiService from './API/ChatBot';
 
 
 
@@ -42,6 +43,7 @@ function App() {
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/cricket-org" element={<CricketOrg />} />
         <Route path="/paypal-payment" element={<PayPalPayment />} />
+        <Route path="/chatbot" element={<GeminiService />} />
       </Routes>
       <Footer />
     </>
