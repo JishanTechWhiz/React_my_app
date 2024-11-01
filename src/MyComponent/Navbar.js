@@ -1,5 +1,4 @@
-// src/MyNavbar.js
-import React from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -8,17 +7,24 @@ import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Link, useNavigate } from "react-router-dom";
 import Badge from "react-bootstrap/Badge";
-import { useAuth } from "../Auth/AuthContext"; // Import useAuth
+import { useAuth } from "../Auth/AuthContext";
 
 export default function MyNavbar() {
   const { isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
   const expand = "md";
 
+  // State to control Offcanvas visibility
+  const [showOffcanvas, setShowOffcanvas] = useState(false);
+
   const handleLogout = () => {
     logout();
-    navigate("/LoginPage"); // Redirect to login after logout
+    navigate("/LoginPage");
+    setShowOffcanvas(false); // Close Offcanvas on logout
   };
+
+  const handleClose = () => setShowOffcanvas(false);
+  const handleShow = () => setShowOffcanvas(true);
 
   return (
     <Navbar expand={expand} className="bg-body-tertiary mb-3">
@@ -26,8 +32,10 @@ export default function MyNavbar() {
         <Navbar.Brand as={Link} to="/">
           My React App
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+        <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} onClick={handleShow} />
         <Navbar.Offcanvas
+          show={showOffcanvas}
+          onHide={handleClose}
           id={`offcanvasNavbar-expand-${expand}`}
           aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
           placement="end"
@@ -39,41 +47,41 @@ export default function MyNavbar() {
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className="me-auto">
-              <Nav.Link as={Link} to="/">
+              <Nav.Link as={Link} to="/" onClick={handleClose}>
                 Home
               </Nav.Link>
               {isAuthenticated && (
-                <Nav.Link as={Link} to="/todos">
+                <Nav.Link as={Link} to="/todos" onClick={handleClose}>
                   TodoList
                 </Nav.Link>
               )}
               {isAuthenticated && (
-                <Nav.Link as={Link} to="/cricket-org">
+                <Nav.Link as={Link} to="/cricket-org" onClick={handleClose}>
                   Cricket Info
                 </Nav.Link>
               )}
               {isAuthenticated && (
-                <Nav.Link as={Link} to="/paypal-payment">
+                <Nav.Link as={Link} to="/paypal-payment" onClick={handleClose}>
                   Paypal Payment
                 </Nav.Link>
               )}
               {isAuthenticated && (
-                <Nav.Link as={Link} to="/chatbot">
+                <Nav.Link as={Link} to="/chatbot" onClick={handleClose}>
                   Chatbot
                 </Nav.Link>
               )}
               {isAuthenticated && (
-                <Nav.Link as={Link} to="/forgot-password">
+                <Nav.Link as={Link} to="/forgot-password" onClick={handleClose}>
                   Forgot Password
                 </Nav.Link>
               )}
               {!isAuthenticated && (
-                <Nav.Link as={Link} to="/registerPage">
+                <Nav.Link as={Link} to="/registerPage" onClick={handleClose}>
                   Register
                 </Nav.Link>
               )}
               {!isAuthenticated && (
-                <Nav.Link as={Link} to="/LoginPage">
+                <Nav.Link as={Link} to="/LoginPage" onClick={handleClose}>
                   Login
                 </Nav.Link>
               )}
@@ -84,7 +92,7 @@ export default function MyNavbar() {
 
             <div className="ms-auto">
               {isAuthenticated && (
-                <Link to="/ProfilePage" style={{ textDecoration: "none" }}>
+                <Link to="/ProfilePage" style={{ textDecoration: "none" }} onClick={handleClose}>
                   <div
                     className="profile-circle"
                     style={{
@@ -98,9 +106,9 @@ export default function MyNavbar() {
                       justifyContent: "center",
                     }}
                   >
-                    <Badge bg="primary">P</Badge> {/* Profile Badge */}
+                    <Badge bg="primary">P</Badge>
                   </div>
-                 </Link>
+                </Link>
               )}
             </div>
 
